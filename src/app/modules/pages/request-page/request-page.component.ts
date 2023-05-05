@@ -9,6 +9,7 @@ import { ApiServiceService } from "src/app/services/api-service.service";
 })
 export class RequestPageComponent implements OnInit {
   constructor(private apiService: ApiServiceService) {}
+  requestsQuantity: number = 0;
 
   requestData: RequestData[] = [];
   requestDataCopy: RequestData[] = [];

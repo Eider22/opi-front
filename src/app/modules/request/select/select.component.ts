@@ -1,11 +1,5 @@
 import { Component, EventEmitter, Output , Input} from "@angular/core";
 import { optionsSelectModel } from "src/app/models/models";
-
-interface Food {
-  value: string;
-  viewValue: string;
-}
-
 @Component({
   selector: "app-select",
   templateUrl: "./select.component.html",

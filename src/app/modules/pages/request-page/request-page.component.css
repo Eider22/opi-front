@@ -29,10 +29,26 @@
 }
 
 .filter-button:hover{
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
+.filter-button:active{
+    transform: scale(0.8);
+}
 
+.view-container{
+  width: 80%;
+  margin: auto;
+  margin-bottom: 2rem;
+}
 
+.button-select-wrap{
+  display: flex;
+  padding: 1rem;
+  padding-left: 0;
+  height: 100px;
+}
 
-
+.button-select-wrap_select{
+  margin-right: 2rem;
+}

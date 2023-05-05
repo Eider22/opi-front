@@ -1,11 +1,19 @@
-<div>
-  <!-- add filter button component -->
-  <button class=" btn-floating filter-button white waves-effect waves-light" (click)="test()">
-    <div class="plus-container"><span class="plus">+</span></div>
-    <span class="add-filter-text">Add filter</span>
-  </button>
-  <!-- select comoponent -->
-  <app-select  [options]="optionsStatusSelect"  (selectionChange)="updateData($event)"></app-select>
+<div class="view-container">
+  <div class="button-select-wrap">
+    <!-- select comoponent -->
+    <app-select class="button-select-wrap_select"
+      [options]="optionsStatusSelect"
+      (selectionChange)="updateData($event)"
+    ></app-select>
+    <!-- add filter button component -->
+    <button
+      class="btn-floating filter-button white waves-effect waves-light"
+      (click)="test()"
+    >
+      <div class="plus-container"><span class="plus">+</span></div>
+      <span class="add-filter-text">Add filter</span>
+    </button>
+  </div>
   <!-- request list comoponent -->
   <app-request-list [requestData]="requestDataCopy"></app-request-list>
 </div>
