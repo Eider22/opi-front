@@ -1,5 +1,5 @@
-import { Component} from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { Component, EventEmitter, Output , Input} from "@angular/core";
+import { optionsSelectModel } from "src/app/models/models";
 
 interface Food {
   value: string;
@@ -12,29 +12,13 @@ interface Food {
   styleUrls: ["./select.component.css"],
 })
 export class SelectComponent {
+  constructor() {}
+  selectedValue: number = 4;
+  @Output() selectionChange = new EventEmitter<number>();
+  @Input() options: optionsSelectModel[] = [];
 
-  selectedValue = "pizza-1";
-  fGroup: FormGroup = new FormGroup({});
-  constructor(
-    private fb: FormBuilder
-  ){
-
+  selectionHandle(value: number) {
+    this.selectedValue = value;
+    this.selectionChange.emit(value);
   }
-
-  constructForm(){
-    this.fGroup = this.fb.group({
-      
-    });
-  }
- 
-
-  foods: Food[] = [
-    { value: "steak-0", viewValue: "Steak" },
-    { value: "pizza-1", viewValue: "Pizza" },
-    { value: "tacos-2", viewValue: "Tacos" },
-  ];
-
-  onSelect() {
-    console.log("Selected value: ", this.selectedValue);
-  }  
 }

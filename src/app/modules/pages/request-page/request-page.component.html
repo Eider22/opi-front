@@ -1,18 +1,11 @@
 <div>
+  <!-- add filter button component -->
   <button class=" btn-floating filter-button white waves-effect waves-light" (click)="test()">
     <div class="plus-container"><span class="plus">+</span></div>
     <span class="add-filter-text">Add filter</span>
   </button>
-  <!-- <app-select></app-select> -->
-  <form>
-    <mat-form-field appearance="fill">
-      <mat-label>State</mat-label>
-      <mat-select [(ngModel)]="selectedValue" name="option" (selectionChange)="selectionHandle($event.value)">
-        <mat-option *ngFor="let option of options" [value]="option.value">
-          {{ option.viewValue }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </form>
+  <!-- select comoponent -->
+  <app-select  [options]="optionsStatusSelect"  (selectionChange)="updateData($event)"></app-select>
+  <!-- request list comoponent -->
   <app-request-list [requestData]="requestDataCopy"></app-request-list>
 </div>

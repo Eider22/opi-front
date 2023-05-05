@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { RequestData, optionsSelectModel } from "src/app/models/models";
+import { ApiServiceService } from "src/app/services/api-service.service";
 
 @Component({
   selector: "app-request-page",
@@ -7,26 +8,21 @@ import { RequestData, optionsSelectModel } from "src/app/models/models";
   styleUrls: ["./request-page.component.css"],
 })
 export class RequestPageComponent implements OnInit {
-  selectedValue: number = 4;
-  options: optionsSelectModel[] = [
+  constructor(private apiService: ApiServiceService) {}
+
+  requestData: RequestData[] = [];
+  requestDataCopy: RequestData[] = [];
+  
+  optionsStatusSelect: optionsSelectModel[] = [
     { value: 1, viewValue: "Solved" },
     { value: 2, viewValue: "Open" },
     { value: 3, viewValue: "Pending" },
     { value: 4, viewValue: "All status" },
   ];
-
-  requestData: RequestData[] = [];
-  requestDataCopy: RequestData[] = [];
+  
 
   ngOnInit() {
     this.getData();
-    console.log("En este instante el componente ha cargado");
-  }
-
-  selectionHandle(value: number) {
-    this.selectedValue = value;
-    console.log(this.selectedValue);
-    this.updateData(value);
   }
 
   updateData(value: number) {
@@ -51,38 +47,19 @@ export class RequestPageComponent implements OnInit {
     }
   }
 
-  test() {
-    console.log("hello  button");
+  getData() {
+    this.apiService.getApidata().subscribe({
+      next: (data: RequestData[]) => {
+        this.requestData = data;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+    this.requestDataCopy = this.requestData;
   }
 
-  getData() {
-    this.requestData.push(
-      {
-        id: 1,
-        userName: "Andres juan",
-        subject: "I can´t login to my account",
-        customerSatisfaction: "100%",
-        priority: "High",
-        status: "Solved",
-      },
-      {
-        id: 2,
-        userName: "Ezequiel Saltino",
-        subject: "I need help!!, can't login...",
-        customerSatisfaction: "80%",
-        priority: "Medium",
-        status: "Open",
-      },
-      {
-        id: 3,
-        userName: "Emiliano Cosenza",
-        subject: "I can´t to login...",
-        customerSatisfaction: "100%",
-        priority: "Low",
-        status: "Pending",
-      }
-    );
-
-    this.requestDataCopy = this.requestData;
+  test() {
+    console.log("hello  button");
   }
 }
