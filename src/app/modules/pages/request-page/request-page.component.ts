@@ -7,7 +7,7 @@ import { RequestData, optionsSelectModel } from "src/app/models/models";
   styleUrls: ["./request-page.component.css"],
 })
 export class RequestPageComponent implements OnInit {
-  selectedValue = "4";
+  selectedValue: number = 4;
   options: optionsSelectModel[] = [
     { value: 1, viewValue: "Solved" },
     { value: 2, viewValue: "Open" },
@@ -16,15 +16,39 @@ export class RequestPageComponent implements OnInit {
   ];
 
   requestData: RequestData[] = [];
+  requestDataCopy: RequestData[] = [];
 
   ngOnInit() {
     this.getData();
     console.log("En este instante el componente ha cargado");
   }
 
-  selectionHandle(value: string) {
+  selectionHandle(value: number) {
     this.selectedValue = value;
     console.log(this.selectedValue);
+    this.updateData(value);
+  }
+
+  updateData(value: number) {
+    if (!value) return;
+    if (value == 1) {
+      this.requestDataCopy = this.requestData.filter(
+        (request) => request.status == "Solved"
+      );
+    }
+    if (value == 2) {
+      this.requestDataCopy = this.requestData.filter(
+        (request) => request.status == "Open"
+      );
+    }
+    if (value == 3) {
+      this.requestDataCopy = this.requestData.filter(
+        (request) => request.status == "Pending"
+      );
+    }
+    if (value == 4) {
+      this.requestDataCopy = this.requestData;
+    }
   }
 
   test() {
@@ -58,5 +82,7 @@ export class RequestPageComponent implements OnInit {
         status: "Pending",
       }
     );
+
+    this.requestDataCopy = this.requestData;
   }
 }
