@@ -15,10 +15,10 @@ export class RequestPageComponent implements OnInit {
   requestDataCopy: RequestData[] = [];
   
   optionsStatusSelect: optionsSelectModel[] = [
-    { value: 1, viewValue: "Solved" },
+    { value: 1, viewValue: "All status" },
     { value: 2, viewValue: "Open" },
     { value: 3, viewValue: "Pending" },
-    { value: 4, viewValue: "All status" },
+    { value: 4, viewValue: "Solved" },
   ];
   
 
@@ -29,9 +29,7 @@ export class RequestPageComponent implements OnInit {
   updateData(value: number) {
     if (!value) return;
     if (value == 1) {
-      this.requestDataCopy = this.requestData.filter(
-        (request) => request.status == "Solved"
-      );
+      this.requestDataCopy = this.requestData;
     }
     if (value == 2) {
       this.requestDataCopy = this.requestData.filter(
@@ -43,8 +41,10 @@ export class RequestPageComponent implements OnInit {
         (request) => request.status == "Pending"
       );
     }
-    if (value == 4) {
-      this.requestDataCopy = this.requestData;
+    if (value == 4) {      
+      this.requestDataCopy = this.requestData.filter(
+        (request) => request.status == "Solved"
+      );
     }
   }
 

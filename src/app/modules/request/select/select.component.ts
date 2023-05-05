@@ -7,7 +7,8 @@ import { optionsSelectModel } from "src/app/models/models";
 })
 export class SelectComponent {
   constructor() {}
-  selectedValue: number = 4;
+  // selectedValue: number = 4;
+  @Input() selectedValue: number = 1;//
   @Output() selectionChange = new EventEmitter<number>();
   @Input() options: optionsSelectModel[] = [];
 
