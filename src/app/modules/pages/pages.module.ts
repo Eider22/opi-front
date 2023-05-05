@@ -13,7 +13,7 @@ import { SelectComponent } from '../request/select/select.component';
   imports: [
     CommonModule,
     RequestModule,
-    SelectComponent 
+    SelectComponent
   ]
 })
 export class PagesModule { }

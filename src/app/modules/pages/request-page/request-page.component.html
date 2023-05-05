@@ -3,6 +3,17 @@
     <div class="plus-container"><span class="plus">+</span></div>
     <span class="add-filter-text">Add filter</span>
   </button>
-  <app-select></app-select>
-  <app-request-list></app-request-list>
+  <!-- <app-select></app-select> -->
+  <form>
+    <mat-form-field appearance="fill">
+      <mat-label>State</mat-label>
+      <mat-select [(ngModel)]="selectedValue" name="option" (selectionChange)="selectionHandle($event.value)">
+        <mat-option *ngFor="let option of options" [value]="option.value">
+          {{ option.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <p>Selected option: {{ selectedValue }}</p>
+  </form>
+  <app-request-list [requestData]="requestData"></app-request-list>
 </div>

@@ -1,4 +1,5 @@
 import { Component} from "@angular/core";
+import { FormBuilder, FormGroup } from "@angular/forms";
 
 interface Food {
   value: string;
@@ -11,7 +12,21 @@ interface Food {
   styleUrls: ["./select.component.css"],
 })
 export class SelectComponent {
+
   selectedValue = "pizza-1";
+  fGroup: FormGroup = new FormGroup({});
+  constructor(
+    private fb: FormBuilder
+  ){
+
+  }
+
+  constructForm(){
+    this.fGroup = this.fb.group({
+      
+    });
+  }
+ 
 
   foods: Food[] = [
     { value: "steak-0", viewValue: "Steak" },
