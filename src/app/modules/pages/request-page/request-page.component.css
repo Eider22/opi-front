@@ -1,0 +1,38 @@
+.filter-button {
+  border: rgb(41, 190, 41) solid 2px;
+  color: rgb(41, 190, 41);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 150px;
+  height: 50px;
+  border-radius: 5%;
+  padding: .8rem;
+}
+
+.plus-container {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: rgb(41, 190, 41);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.plus {  font-size: 1rem;
+  color: white;
+}
+
+.add-filter-text {
+  font-size: 1.2rem;
+}
+
+.filter-button:hover{
+    transform: scale(1.1);
+}
+
+
+
+
+
